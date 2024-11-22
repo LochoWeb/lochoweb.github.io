@@ -100,7 +100,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Will You Be My Date, Marjorie? 💖</h1>
+        <h1>Will You Be My Date, Maine Latayada? 💖</h1>
         <p>You’re special to me, and I want our day to be unforgettable. Please choose how we’ll spend it together!</p>
         <form id="dateForm">
             <label for="food">What do you want to eat? 🍽️</label>
@@ -134,15 +134,12 @@
             <input type="date" id="date" required>
             
             <button type="submit">Plan Our Date ❤️</button>
+           
         </form>
         <div id="result"></div>
     </div>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS
-        emailjs.init("QUTtjw-pMO9IedVuG"); // Replace with your actual EmailJS User ID
-
         document.getElementById("dateForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
@@ -152,46 +149,25 @@
             const date = document.getElementById("date").value;
 
             const resultDiv = document.getElementById("result");
-
-            if (food && place && movie && date) {
-                const message = `
-                    Date Plan:
-                    - Food: ${food}
-                    - Place: ${place}
-                    - Movie: ${movie}
-                    - Date: ${new Date(date).toDateString()}
+            if (date) {
+                resultDiv.innerHTML = `
+                    <p>Thank you for sharing your choices, Maine Latayada! Here’s our plan:</p>
+                    <ul>
+                        <li>We’ll enjoy some delicious <strong>${food}</strong>.</li>
+                        <li>Then, we’ll spend quality time at <strong>${place}</strong>.</li>
+                        <li>Finally, we’ll watch a <strong>${movie}</strong> movie together.</li>
+                        <li>All of this will happen on <strong>${new Date(date).toDateString()}</strong>.</li>
+                    </ul>
+                    <p>I’m really looking forward to this magical day with you! 💕</p>
+                    <div class="heart">❤️</div>
                 `;
-
-                // Send email using EmailJS
-                emailjs.send("service_ub87xfj", "template_t5yo0le", {
-                    Marjorie: "Marjorie",
-                    Airon: "Airon",
-                    message: message
-                }).then(
-                    function(response) {
-                        console.log("Email sent successfully!", response.status, response.text);
-                        resultDiv.innerHTML = `
-                            <p>Thank you for sharing your choices, Marjorie! Here’s our plan:</p>
-                            <ul>
-                                <li>We’ll enjoy some delicious <strong>${food}</strong>.</li>
-                                <li>Then, we’ll spend quality time at <strong>${place}</strong>.</li>
-                                <li>Finally, we’ll watch a <strong>${movie}</strong> movie together.</li>
-                                <li>All of this will happen on <strong>${new Date(date).toDateString()}</strong>.</li>
-                            </ul>
-                            <p>I’m really looking forward to this magical day with you! 💕</p>
-                            <div class="heart">❤️</div>
-                        `;
-                    },
-                    function(error) {
-                        console.log("Failed to send email:", error);
-                        alert("There was an error sending the email. Please try again.");
-                    }
-                );
             } else {
-                resultDiv.innerHTML = `<p>Please fill out all fields.</p>`;
+                resultDiv.innerHTML = `<p>Please select a date for our date! ❤️</p>`;
             }
         });
     </script>
 </body>
 </html>
+
+
 
