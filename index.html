@@ -5,97 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Perfect Date 💖</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fff0f5;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #ffebee, #ffc1e3);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            color: #e91e63;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            animation: heartbeat 1.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
-            color: #d81b60;
-        }
-
-        select, button, input[type="date"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button {
-            background-color: #e91e63;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #d81b60;
-            transform: scale(1.05);
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #444;
-            line-height: 1.6;
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .heart {
-            font-size: 2em;
-            color: #e91e63;
-            margin-top: 10px;
-            animation: heartbeat 1.5s infinite;
-        }
+        /* Your existing CSS */
     </style>
 </head>
 <body>
@@ -156,7 +66,7 @@
             // If all fields are filled out, proceed to send email
             if (food && place && movie && date) {
                 const message = `
-                    Date Plan:
+                    Here's our planned date:
                     - Food: ${food}
                     - Place: ${place}
                     - Movie: ${movie}
@@ -164,13 +74,13 @@
                 `;
 
                 // Send the email via EmailJS
-               emailjs.send("service_ub87xfj", "template_t5yo0le", {
+                emailjs.send("service_ub87xfj", "template_t5yo0le", {
                     from_name: "Marjorie",   // Name to appear in the email
-                    to_name: "aironmanansala751@gmail.com",    // The recipient's name (e.g., your email)
-                    message: message
+                    to_name: "Airon",       // Recipient's name
+                    message: message        // The constructed message
                 }).then(
                     function(response) {
-                        console.log('Success!', response.status, response.text);
+                        console.log('Email sent successfully!', response.status, response.text);
                         resultDiv.innerHTML = `
                             <p>Thank you for sharing your choices, Marjorie! Here’s our plan:</p>
                             <ul>
@@ -184,7 +94,7 @@
                         `;
                     },
                     function(error) {
-                        console.log('Failed...', error);
+                        console.log('Failed to send email:', error);
                         alert("There was an error sending the email. Please try again.");
                     }
                 );
