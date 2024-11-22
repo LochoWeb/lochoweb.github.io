@@ -134,6 +134,7 @@
             <input type="date" id="date" required>
             
             <button type="submit">Plan Our Date ❤️</button>
+             <a href="index.html"><button type="">next</button></a>
         </form>
         <div id="result"></div>
     </div>
