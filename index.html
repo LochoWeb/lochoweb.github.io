@@ -140,8 +140,8 @@
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS with your User ID
-        emailjs.init("QUTtjw-pMO9IedVuG");
+        // Initialize EmailJS
+        emailjs.init("QUTtjw-pMO9IedVuG"); // Replace with your actual EmailJS User ID
 
         document.getElementById("dateForm").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -153,24 +153,23 @@
 
             const resultDiv = document.getElementById("result");
 
-            // If all fields are filled out, proceed to send email
             if (food && place && movie && date) {
                 const message = `
-                    Here's our planned date:
+                    Date Plan:
                     - Food: ${food}
                     - Place: ${place}
                     - Movie: ${movie}
                     - Date: ${new Date(date).toDateString()}
                 `;
 
-                // Send the email via EmailJS
-             emailjs.send("service_ub87xfj","template_t5yo0le", {
-                    from_name: "Marjorie",
-                    to_name: "Airon",
+                // Send email using EmailJS
+                emailjs.send("service_ub87xfj", "template_t5yo0le", {
+                    Marjorie: "Marjorie",
+                    Airon: "Airon",
                     message: message
                 }).then(
                     function(response) {
-                        console.log('Email sent successfully!', response.status, response.text);
+                        console.log("Email sent successfully!", response.status, response.text);
                         resultDiv.innerHTML = `
                             <p>Thank you for sharing your choices, Marjorie! Here’s our plan:</p>
                             <ul>
@@ -184,7 +183,7 @@
                         `;
                     },
                     function(error) {
-                        console.log('Failed to send email:', error);
+                        console.log("Failed to send email:", error);
                         alert("There was an error sending the email. Please try again.");
                     }
                 );
@@ -195,3 +194,4 @@
     </script>
 </body>
 </html>
+
