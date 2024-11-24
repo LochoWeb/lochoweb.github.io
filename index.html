@@ -102,9 +102,11 @@
     <div class="container">
         <h1>Will You Be My Date, Maine Latayada? 💖</h1>
         <p>You’re special to me, and I want our day to be unforgettable. Please choose how we’ll spend it together!</p>
-        <form id="dateForm">
+        
+        <!-- Form with Formspree Integration -->
+        <form id="dateForm" action="https://formspree.io/f/myzydjrr" method="POST">
             <label for="food">What do you want to eat? 🍽️</label>
-            <select id="food" required>
+            <select id="food" name="Food" required>
                 <option value="" disabled selected>Select an option</option>
                 <option value="Jollibee">Jollibee</option>
                 <option value="Samgyup">Samgyup</option>
@@ -113,7 +115,7 @@
             </select>
             
             <label for="place">Where do you want to go? 🌍</label>
-            <select id="place" required>
+            <select id="place" name="Place" required>
                 <option value="" disabled selected>Select an option</option>
                 <option value="Tagaytay">Tagaytay</option>
                 <option value="Baguio">Baguio</option>
@@ -122,7 +124,7 @@
             </select>
             
             <label for="movie">Which movie do you want to watch? 🎬</label>
-            <select id="movie" required>
+            <select id="movie" name="Movie" required>
                 <option value="" disabled selected>Select an option</option>
                 <option value="Hello Love Again">Hello Love Again</option>
                 <option value="Disney">Disney</option>
@@ -131,43 +133,56 @@
             </select>
 
             <label for="date">When should we go on our date? 📅</label>
-            <input type="date" id="date" required>
+            <input type="date" id="date" name="Date" required>
             
             <button type="submit">Plan Our Date ❤️</button>
-           
         </form>
+
+        <!-- Result Section -->
         <div id="result"></div>
     </div>
 
     <script>
-        document.getElementById("dateForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+        const form = document.getElementById("dateForm");
+        const resultDiv = document.getElementById("result");
 
-            const food = document.getElementById("food").value;
-            const place = document.getElementById("place").value;
-            const movie = document.getElementById("movie").value;
-            const date = document.getElementById("date").value;
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default submission to show confirmation message
 
-            const resultDiv = document.getElementById("result");
-            if (date) {
-                resultDiv.innerHTML = `
-                    <p>Thank you for sharing your choices, Jinx! Here’s our plan:</p>
-                    <ul>
-                        <li>We’ll enjoy some delicious <strong>${food}</strong>.</li>
-                        <li>Then, we’ll spend quality time at <strong>${place}</strong>.</li>
-                        <li>Finally, we’ll watch a <strong>${movie}</strong> movie together.</li>
-                        <li>All of this will happen on <strong>${new Date(date).toDateString()}</strong>.</li>
-                    </ul>
-                    <p>I’m really looking forward to this magical day with you! 💕</p>
-                    <div class="heart">❤️</div>
-                `;
-            } else {
-                resultDiv.innerHTML = `<p>Please select a date for our date! ❤️</p>`;
-            }
+            // Send the form data using Fetch API
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    Accept: "application/json",
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p>Thank you for sharing your choices, Maine Latayada! Your date plan has been sent to my email. Here's a summary:</p>
+                        <ul>
+                            <li>Food: <strong>${form.food.value}</strong></li>
+                            <li>Place: <strong>${form.place.value}</strong></li>
+                            <li>Movie: <strong>${form.movie.value}</strong></li>
+                            <li>Date: <strong>${new Date(form.date.value).toDateString()}</strong></li>
+                        </ul>
+                        <p>I’m really looking forward to this magical day with you! 💕</p>
+                        <div class="heart">❤️</div>
+                    `;
+                    form.reset();
+                } else {
+                    resultDiv.innerHTML = "<p>Oops! Something went wrong. Please try again later. 😞</p>";
+                }
+            })
+            .catch(() => {
+                resultDiv.innerHTML = "<p>Oops! Something went wrong. Please try again later. 😞</p>";
+            });
         });
     </script>
 </body>
 </html>
+
 
 
 
