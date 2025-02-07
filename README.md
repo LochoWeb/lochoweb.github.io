@@ -100,7 +100,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Will You Be My Date, Jinx? 💖</h1>
+        <h1>Will You Be My Valentine, Jinx? 💖</h1>
         <p>You’re special to me, and I want our day to be unforgettable. Please choose how we’ll spend it together!</p>
         <form id="dateForm">
             <label for="food">What do you want to eat? 🍽️</label>
@@ -108,7 +108,7 @@
                 <option value="" disabled selected>Select an option</option>
                 <option value="Jollibee">Jollibee</option>
                 <option value="Samgyup">Samgyup</option>
-                <option value="Inasal">Inasal</option>
+                <option value="Mcdo">Inasal</option>
                 <option value="Street Foods">Street Foods</option>
             </select>
             
@@ -116,7 +116,7 @@
             <select id="place" required>
                 <option value="" disabled selected>Select an option</option>
                 <option value="Tagaytay">Tagaytay</option>
-                <option value="Baguio">Baguio</option>
+                <option value="Somewhere quite & piece">Somewhere quite & piece</option>
                 <option value="SM">SM</option>
                 <option value="Park">Park</option>
             </select>
@@ -124,9 +124,9 @@
             <label for="movie">Which movie do you want to watch? 🎬</label>
             <select id="movie" required>
                 <option value="" disabled selected>Select an option</option>
-                <option value="Hello Love Again">Hello Love Again</option>
-                <option value="Disney">Disney</option>
-                <option value="Action">Action</option>
+                <option value="SM Cinema">SM Cinema</option>
+                <option value="Netflix">Netflix</option>
+                <option value="Kdrama">Kdrama</option>
                 <option value="Horror">Horror</option>
             </select>
 
