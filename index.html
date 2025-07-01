@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Do You Love Me?</title>
   <style>
     * {
@@ -31,11 +31,10 @@
     }
 
     .buttons {
-      position: relative;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
+      justify-content: center;
       margin-bottom: 30px;
     }
 
@@ -56,7 +55,7 @@
     #no {
       background-color: #ddd;
       color: #333;
-      position: absolute;
+      position: relative;
     }
 
     #message {
@@ -66,6 +65,7 @@
       opacity: 0;
       transition: opacity 0.5s ease;
       min-height: 30px;
+      margin-top: 20px;
     }
 
     #message.show {
@@ -109,20 +109,20 @@
       message.classList.add("show");
     });
 
-    noBtn.addEventListener("mouseover", moveNoBtn);
-    noBtn.addEventListener("touchstart", moveNoBtn);
-
     function moveNoBtn() {
-      const padding = 20;
-      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
+      noBtn.style.position = 'fixed';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
+
+    noBtn.addEventListener("mouseover", moveNoBtn);
+    noBtn.addEventListener("touchstart", moveNoBtn);
   </script>
 
 </body>
