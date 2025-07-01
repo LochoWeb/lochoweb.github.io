@@ -99,26 +99,36 @@
 
   <div id="message"></div>
 
+  <!-- 🎵 Background music (must match actual filename) -->
+  <audio id="bg-music" loop>
+    <source src="Put Your Records On - Corinne Bailey Rae  [sped up].mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const message = document.getElementById("message");
+    const bgMusic = document.getElementById("bg-music");
 
     yesBtn.addEventListener("click", () => {
       message.innerHTML = "Yay! ulol haha! 💗💗💗";
       message.classList.add("show");
+
+      // Play music after click (for mobile compatibility)
+      bgMusic.play().catch((e) => {
+        console.log("Music couldn't autoplay:", e);
+      });
     });
 
     function moveNoBtn() {
-      // Set to absolute temporarily
-      noBtn.style.position = 'absolute';
-
       const maxX = window.innerWidth - noBtn.offsetWidth - 20;
       const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
+      noBtn.style.position = 'absolute';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
@@ -129,3 +139,4 @@
 
 </body>
 </html>
+
