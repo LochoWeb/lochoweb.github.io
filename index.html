@@ -23,6 +23,11 @@
       overflow: hidden;
     }
 
+    #luffy-gif-static {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
     h1 {
       font-size: 2rem;
       color: #333;
@@ -85,10 +90,17 @@
       #message {
         font-size: 20px;
       }
+
+      #luffy-gif-static {
+        width: 90px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Luffy sitting on top -->
+  <img src="luffy.gif" alt="Luffy Crying" id="luffy-gif-static" />
 
   <h1>Do you love me? 💖</h1>
 
@@ -99,10 +111,9 @@
 
   <div id="message"></div>
 
-  <!-- 🎵 Background music (must match actual filename) -->
+  <!-- Background music -->
   <audio id="bg-music" loop>
     <source src="Put Your Records On - Corinne Bailey Rae  [sped up].mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <script>
@@ -114,10 +125,8 @@
     yesBtn.addEventListener("click", () => {
       message.innerHTML = "Yay! ulol haha! 💗💗💗";
       message.classList.add("show");
-
-      // Play music after click (for mobile compatibility)
-      bgMusic.play().catch((e) => {
-        console.log("Music couldn't autoplay:", e);
+      bgMusic.play().catch(err => {
+        console.log("Autoplay blocked. Music will play after user interaction.");
       });
     });
 
