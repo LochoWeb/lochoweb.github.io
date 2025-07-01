@@ -23,9 +23,10 @@
       overflow: hidden;
     }
 
-    #luffy-gif-static {
+    #luffy-gif {
       width: 120px;
       margin-bottom: 10px;
+      transition: 0.3s ease;
     }
 
     h1 {
@@ -78,6 +79,10 @@
     }
 
     @media (max-width: 600px) {
+      #luffy-gif {
+        width: 90px;
+      }
+
       h1 {
         font-size: 1.5rem;
       }
@@ -90,17 +95,13 @@
       #message {
         font-size: 20px;
       }
-
-      #luffy-gif-static {
-        width: 90px;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Luffy sitting on top -->
-  <img src="luffy.gif" alt="Luffy Crying" id="luffy-gif-static" />
+  <!-- Sad Luffy default -->
+  <img src="luffy.gif" alt="Luffy Sad" id="luffy-gif" />
 
   <h1>Do you love me? 💖</h1>
 
@@ -111,7 +112,6 @@
 
   <div id="message"></div>
 
-  <!-- Background music -->
   <audio id="bg-music" loop>
     <source src="Put Your Records On - Corinne Bailey Rae [sped up].mp3" type="audio/mpeg">
   </audio>
@@ -121,13 +121,13 @@
     const noBtn = document.getElementById("no");
     const message = document.getElementById("message");
     const bgMusic = document.getElementById("bg-music");
+    const luffyGif = document.getElementById("luffy-gif");
 
     yesBtn.addEventListener("click", () => {
       message.innerHTML = "Yay! ulol haha! 💗💗💗";
       message.classList.add("show");
-      bgMusic.play().catch(err => {
-        console.log("Autoplay blocked. Music will play after user interaction.");
-      });
+      luffyGif.src = "luffy1.gif"; // Switch to happy Luffy
+      bgMusic.play().catch(() => {});
     });
 
     function moveNoBtn() {
@@ -148,4 +148,5 @@
 
 </body>
 </html>
+
 
