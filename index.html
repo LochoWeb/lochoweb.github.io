@@ -110,18 +110,20 @@
     });
 
     function moveNoBtn() {
+      // Set to absolute temporarily
+      noBtn.style.position = 'absolute';
+
       const maxX = window.innerWidth - noBtn.offsetWidth - 20;
       const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
-      noBtn.style.position = 'fixed';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
 
-    noBtn.addEventListener("mouseover", moveNoBtn);
+    noBtn.addEventListener("mouseenter", moveNoBtn);
     noBtn.addEventListener("touchstart", moveNoBtn);
   </script>
 
